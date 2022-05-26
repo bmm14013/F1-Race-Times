@@ -6,16 +6,21 @@ function Home({setTimeZone}) {
 
     const navigate = useNavigate();
 
-    const [selectedTimezone, setSelectedTimezone] = useState({})
+    const [selectedTimezone, setSelectedTimezone] = useState('');
 
-    const showRaceTime = async (setTimezone) => {
-        navigate("/race-time")
+    const showRaceTime = async timeZone => {
+        if (timeZone === '') {
+            alert('Please choose a time zone');
+        } else {
+            setTimeZone(timeZone);
+            navigate("/race-time");
+        }
     }
 
     return <div>
         <body>
             <h1>Please choose your timezone: </h1>
-            <form onSubmit={(e) => {e.preventDefault();}}>
+            <form onSubmit={(e) => {e.preventDefault()}}>
                 <TimezoneSelect
                     value={selectedTimezone}
                     onChange={setSelectedTimezone}
@@ -23,7 +28,7 @@ function Home({setTimeZone}) {
                 <p></p>
                 <button 
                     type="submit"
-                    onClick={showRaceTime}
+                    onClick={() => showRaceTime(selectedTimezone)}
                 >See Next Race Times</button>
             </form>
         </body>
