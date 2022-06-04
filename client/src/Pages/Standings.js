@@ -15,7 +15,7 @@ function Standings() {
         for (let i = 0; i < driverStandings.length; i++) {
             let driverFn = driverStandings[i].Driver.givenName;
             let driverLn = driverStandings[i].Driver.familyName;
-            let driver = {Position: `${i}`, Driver: `${driverFn} ${driverLn}`};
+            let driver = {Position: `${i+1}`, Driver: `${driverFn} ${driverLn}`};
             driverStandingsFiltered["Driver Standings"].push(driver);
         }
         setDriverStandings(driverStandingsFiltered)
@@ -28,7 +28,7 @@ function Standings() {
         let constructorStandingsFiltered = {"Constructor Standings": []};
         for (let i = 0; i < constructorStandings.length; i++) {
             let constructorName = constructorStandings[i].Constructor.name;
-            let constructor = {Position: `${i}`, Constructor: `${constructorName}`};
+            let constructor = {Position: `${i+1}`, Constructor: `${constructorName}`};
             constructorStandingsFiltered["Constructor Standings"].push(constructor);
         }
         setConstructorStandings(constructorStandingsFiltered)
